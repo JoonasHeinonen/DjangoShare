@@ -355,3 +355,6 @@ venv/
 
 # Virtualenvironment should be installed manually.
 vscode/
+
+# Ignore admin login credentials
+admin_login_credentials
