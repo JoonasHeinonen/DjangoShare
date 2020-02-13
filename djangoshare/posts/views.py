@@ -1,6 +1,25 @@
 # from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from django.shortcuts import render
+
+from .models import Category
 
 def index(request):
-    return HttpResponse('Index page for posts')
+    category_list = Category.objects.order_by('category_name')
+    context = {
+        'category_list': category_list
+    }
+    return render(request, 'posts/index.html', context)
 
+def category(request, category_id):
+    try:
+        category = Category.objects.get(pk=category_id)
+    except Category.DoesNotExist:
+        raise Http404("Question does not exist")
+    return render(request, 'posts/category.html', {'category': category})
+
+def posts(request):
+    pass
+
+def about(request):
+    return HttpResponse("About")

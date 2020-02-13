@@ -1,0 +1,19 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    {% if category_list %}
+        <h2>Categories for posts</h2x>
+        {% for category in category_list %}
+            <div class="ui raised very padded text container segment">
+                <img src="https://www.w3schools.com/css/ocean.jpg" style="text-align: center;"/>
+                <div class="ui fitted divider"></div>
+                <a href="/post/{{ category.id }}">
+                    <h4 style="text-align: center;">
+                        {{ category.category_name }}
+                    </h4>
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>Stop wasting my processing time...</h3>
+    {% endif %}
+{% endblock %}
