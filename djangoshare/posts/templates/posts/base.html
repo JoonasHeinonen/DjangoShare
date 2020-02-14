@@ -18,17 +18,24 @@
             <a class="item">Submit</a>
             <div class="right menu">
                 <div class="item">
-                    <a href="/post/login">
+                    <a href="#">
                         <div class="ui button">Login</div>
                     </a>
                 </div>
                 <div class="item">
-                    <a href="/post/register">
+                    <a href="register/">
                         <div class="ui primary button">Register</div>
                     </a>
                 </div>
             </div>
         </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div>
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
         {% block content %}
             
         {% endblock %}
