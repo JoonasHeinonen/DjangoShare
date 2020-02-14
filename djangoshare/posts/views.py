@@ -21,5 +21,11 @@ def category(request, category_id):
 def posts(request):
     pass
 
+def login(request):
+    return render(request, 'posts/login.html')
+
+def register(request):
+    return render(request, 'posts/register.html')
+
 def about(request):
     return HttpResponse("About")

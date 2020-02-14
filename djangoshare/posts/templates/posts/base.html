@@ -2,11 +2,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>HOMO</title>
+        <title>DjangoShare</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="{% static 'posts/semantic.min.css' %}">
     </head>
     <body>
+        <div class="ui menu">
+            <div class="ui category search item">
+                <div class="ui transparent icon input">
+                    <input class="prompt" type="text" placeholder="Search posts...">
+                    <i class="search link icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>
+            <a class="item">Submit</a>
+            <div class="right menu">
+                <div class="item">
+                    <a href="/post/login">
+                        <div class="ui button">Login</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/post/register">
+                        <div class="ui primary button">Register</div>
+                    </a>
+                </div>
+            </div>
+        </div>
         {% block content %}
             
         {% endblock %}
