@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'posts/semantic.min.css' %}">
     </head>
     <body>
+        <!-- Our navigation bar in website -->
         <div class="ui menu">
             <div class="ui category search item">
                 <div class="ui transparent icon input">
@@ -15,18 +16,32 @@
                 </div>
                 <div class="results"></div>
             </div>
-            <a class="item">Submit</a>
+            <a href="{% url 'index' %}" class="item">Frontpage</a>
+            <!-- Login, logout and register -->
             <div class="right menu">
-                <div class="item">
-                    <a href="#">
-                        <div class="ui button">Login</div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="register/">
-                        <div class="ui primary button">Register</div>
-                    </a>
-                </div>
+                {% if user.is_authenticated %}
+                    <div class="item">
+                        <a href="{% url 'profile' %}">
+                            <div class="ui primary button">Profile</div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'logout' %}">
+                            <div class="ui button">Logout</div>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="item">
+                        <a href="{% url 'login' %}">
+                            <div class="ui button">Login</div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'register' %}">
+                            <div class="ui primary button">Register</div>
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
         {% if messages %}

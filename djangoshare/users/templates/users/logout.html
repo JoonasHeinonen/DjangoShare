@@ -1,0 +1,8 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    <div class="ui raised very padded text container segment">
+       <h2>Logged Out</h2>
+       <p>You have been logged out from DjangoShare.</p>
+       <a href="{% url 'login' %}">Log In Again</a>
+    </div>
+{% endblock %}
