@@ -3,5 +3,12 @@
     <div class="ui raised very padded text container segment">
         <h1>{{ user.username }}</h1>
         <img src="{{ user.profile.image.url }}"/>
+        <form method="POST" class="ui form" enctype="multipart/form-data">
+            <h3>Profile Info</h3>
+            {% csrf_token %}
+            {{ u_form.as_p }}
+            {{ p_form.as_p }}
+            <button class="ui button" type="submit">Update</button>
+        </form>
     </div>
 {% endblock %}
