@@ -2,6 +2,7 @@
 from django.http import HttpResponse, Http404
 from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import render
+from django.db.models import Q
 
 from .models import Category, Post
 
@@ -29,6 +30,17 @@ class PostCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class Search(ListView):
+    model = Post
+    template_name = 'posts/search.html'
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Post.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query)
+        )
+        return object_list
 
 def posts(request):
     pass

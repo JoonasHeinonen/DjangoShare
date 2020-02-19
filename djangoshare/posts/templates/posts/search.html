@@ -1,0 +1,15 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    <h4>Search results...</h4>
+    {% for post in object_list %}
+        <div class="ui raised very padded text container segment">
+            <h2>{{ post.title }}</h2>
+            <img src="{{ post.image.url }}"/>
+            <div class="ui segment">
+                <h4>Description: (Posted on {{ post.pub_date }}) </h4>
+                <div class="ui fitted divider"></div>
+                <p>{{ post.description }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

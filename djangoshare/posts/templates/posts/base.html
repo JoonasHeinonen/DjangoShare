@@ -13,8 +13,10 @@
         <div class="ui menu" id="share-header">
             <div class="ui category search item">
                 <div class="ui transparent icon input">
-                    <input class="prompt" type="text" placeholder="Search posts...">
-                    <i class="search link icon"></i>
+                    <form name="myform" method="GET" action="{% url 'search' %}"> 
+                        <input name="q" class="prompt" type="text" placeholder="Search posts...">
+                        <i class="search link icon"></i>
+                    </form>
                 </div>
                 <div class="results"></div>
             </div>
