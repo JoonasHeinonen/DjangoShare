@@ -6,7 +6,7 @@
             <div class="ui raised very padded text container segment">
                 <img src="https://www.w3schools.com/css/ocean.jpg" style="text-align: center;"/>
                 <div class="ui fitted divider"></div>
-                <a href="/post/{{ category.id }}">
+                <a href="{% url 'category-detail' category.id%}">
                     <h4 style="text-align: center;">
                         {{ category.category_name }}
                     </h4>

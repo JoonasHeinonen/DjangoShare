@@ -1,0 +1,11 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    <div class="ui raised very padded text container segment">
+        <form method="POST" class="ui form" enctype="multipart/form-data">
+            <h2>New post</h2>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="ui button" type="submit">Post</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,10 +1,11 @@
 from django.urls import path
-
+from .views import CategoryListView, CategoryDetailView, PostDetailView, PostCreateView
+from django.contrib.auth.decorators import login_required
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('<int:category_id>/', views.category, name="category"),
-    path('<int:category_id/posts/', views.posts, name='posts'),
-    path('about/', views.about, name='about'),
+    path('', CategoryListView.as_view(), name='index'),
+    path('category/<int:pk>', CategoryDetailView.as_view(), name='category-detail'),
+    path('category/post/<int:pk>', PostDetailView.as_view(), name='post-detail'),
+    path('new/', login_required(PostCreateView.as_view()), name='post-create'),
 ]

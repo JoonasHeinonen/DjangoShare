@@ -1,8 +1,9 @@
 from django.db import models
+from django.urls import reverse
 
 class Category(models.Model):
     category_name = models.CharField(max_length=100)
-    parent = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
+    parent        = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "categories"
@@ -18,14 +19,21 @@ class Category(models.Model):
 class Post(models.Model):
     category      = models.ForeignKey(Category, related_name="posts", on_delete=models.CASCADE)
     title         = models.CharField(max_length=100)
+    image         = models.ImageField(default='default.jpg', upload_to='post_pics')
     description   = models.CharField(max_length=1000)
-    pub_date      = models.DateTimeField('date published')
+    pub_date      = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "posts"
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.pk})
 
 class Comment(models.Model):
     post          = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
     title         = models.CharField(max_length=60)
     content       = models.CharField(max_length=500)
-    pub_date      = models.DateTimeField('date published')
+    pub_date      = models.DateTimeField(auto_now_add=True)

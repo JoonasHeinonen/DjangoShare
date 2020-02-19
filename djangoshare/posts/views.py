@@ -1,22 +1,34 @@
 # from django.shortcuts import render
 from django.http import HttpResponse, Http404
+from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import render
 
-from .models import Category
+from .models import Category, Post
 
-def index(request):
-    category_list = Category.objects.order_by('category_name')
-    context = {
-        'category_list': category_list
-    }
-    return render(request, 'posts/index.html', context)
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'posts/index.html'
+    context_object_name = 'category_list'
+    ordering = ['category_name']
 
-def category(request, category_id):
-    try:
-        category = Category.objects.get(pk=category_id)
-    except Category.DoesNotExist:
-        raise Http404("Question does not exist")
-    return render(request, 'posts/category.html', {'category': category})
+class CategoryDetailView(ListView):
+    model = Post
+    template_name = 'posts/category_detail.html'
+    context_object_name = 'all_posts'
+    ordering = ['title']
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'posts/post_detail.html'
+    context_object_name = 'posts_in_category'
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ['category', 'image', 'title', 'description']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 def posts(request):
     pass

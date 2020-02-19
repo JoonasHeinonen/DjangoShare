@@ -1,0 +1,18 @@
+/* DjangoShare's custom styling file */
+
+body {
+    background-image: url("../../media/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#site-content {
+    margin: 6em;
+}
+
+#share-header {
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 999;
+}

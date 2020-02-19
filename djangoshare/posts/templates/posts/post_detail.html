@@ -1,0 +1,12 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    <div class="ui raised very padded text container segment">
+        <h2>{{ posts_in_category.title }}</h2>
+        <img src="{{ posts_in_category.image.url }}"/>
+        <div class="ui segment">
+            <h4>Description: (Posted on {{ posts_in_category.pub_date }}) </h4>
+            <div class="ui fitted divider"></div>
+            <p>{{ posts_in_category.description }}</p>
+        </div>
+    </div>
+{% endblock %}
