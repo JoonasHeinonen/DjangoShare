@@ -13,9 +13,11 @@
         <div class="ui menu" id="share-header">
             <div class="ui category search item">
                 <div class="ui transparent icon input">
-                    <form name="myform" method="GET" action="{% url 'search' %}"> 
-                        <input name="q" class="prompt" type="text" placeholder="Search posts...">
-                        <i class="search link icon"></i>
+                    <form id="share-search-bar" name="myform" method="GET" action="{% url 'search' %}"> 
+                        <div class="ui icon input">
+                            <input name="q" class="prompt" type="text" placeholder="Search posts...">
+                            <i class="search link icon"></i>
+                        </div>
                     </form>
                 </div>
                 <div class="results"></div>
@@ -64,6 +66,20 @@
             {% block content %}
                 
             {% endblock %}
+        </div>
+        <div id="share-footer">
+            {% if user.is_authenticated %}
+                <div id="site-footer" class="ui inverted vertical footer segment"  style="background-color: grey;">
+                    <div class="ui container">
+                        You are logged in!
+                    </div>
+                </div>
+                {% endif %}
+            <div id="site-footer" class="ui inverted vertical footer segment">
+                <div class="ui container">
+                    DjangoShare 2020 (C) All rights reserved.
+                </div>
+            </div>
         </div>
     </body>
 </html>

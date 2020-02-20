@@ -10,9 +10,26 @@ body {
     margin: 6em;
 }
 
+#site-footer {
+    bottom: 0;
+    margin: -1em;
+}
+
 #share-header {
     position: fixed; 
     top: 0; 
     width: 100%; 
     z-index: 999;
+}
+
+input {
+    border-style: none;
+    border-width: 0px;
+    outline: none;
+    border-color: lightgrey;
+}
+
+.null-button {
+    background-color: none;
+    border: 0px;
 }
