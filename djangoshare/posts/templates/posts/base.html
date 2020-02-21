@@ -25,7 +25,8 @@
             <a href="{% url 'index' %}" class="item">Frontpage</a>
             {% if user.is_authenticated %}
             <a href="{% url 'post-create' %}" class="item">
-                <i class="upload icon"></i>
+                <span>Upload</span>
+                <i class="cloud upload icon" style="top: -1em;"></i>
             </a>
             {% endif %}
             <!-- Login, logout and register -->
@@ -33,7 +34,10 @@
                 {% if user.is_authenticated %}
                     <div class="item">
                         <a href="{% url 'profile' %}">
-                            <div class="ui primary button">Profile</div>
+                            <div class="ui primary button" style="padding: 0.28em; margin: 0;">
+                                <span>{{ user.profile.user }}</span>
+                                <img class="ui avatar image " src="{{ user.profile.image.url }}">
+                            </div>
                         </a>
                     </div>
                     <div class="item">
@@ -43,13 +47,13 @@
                     </div>
                 {% else %}
                     <div class="item">
-                        <a href="{% url 'login' %}">
-                            <div class="ui button">Login</div>
+                        <a href="{% url 'register' %}">
+                            <div class="ui primary button">Register</div>
                         </a>
                     </div>
                     <div class="item">
-                        <a href="{% url 'register' %}">
-                            <div class="ui primary button">Register</div>
+                        <a href="{% url 'login' %}">
+                            <div class="ui button">Login</div>
                         </a>
                     </div>
                 {% endif %}
@@ -58,8 +62,12 @@
         <div id="site-content">
             {% if messages %}
                 {% for message in messages %}
-                    <div>
-                        <p>{{ message }}</p>
+                    <div class="ui green message" style="margin: -40em; margin: 0 auto;">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            <p>Message</p>
+                        </div>
+                            <p>{{ message }}</p>
                     </div>
                 {% endfor %}
             {% endif %}

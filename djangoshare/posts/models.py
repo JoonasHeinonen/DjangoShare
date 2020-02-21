@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     category_name = models.CharField(max_length=100)
@@ -20,8 +21,9 @@ class Post(models.Model):
     category      = models.ForeignKey(Category, related_name="posts", on_delete=models.CASCADE)
     title         = models.CharField(max_length=100)
     image         = models.ImageField(default='default.jpg', upload_to='post_pics')
-    description   = models.CharField(max_length=1000)
+    description   = models.TextField()
     pub_date      = models.DateTimeField(auto_now_add=True)
+    author        = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     class Meta:
         verbose_name_plural = "posts"

@@ -1,9 +1,19 @@
 {% extends 'posts/base.html' %}
 {% block content %}
     <div class="ui raised very padded text container segment">
-        <h2>{{ posts_in_category.title }}</h2>
-        <img src="{{ posts_in_category.image.url }}"/>
+        <h2 style="float: left;">{{ posts_in_category.title }}</h2>
+        {% if object.author == user %}
+            <div style="float: right;">
+                <a href="{% url 'post-update' object.id %}"><i class="edit icon"></i></a>
+                <a href="{% url 'post-delete' object.id %}"><i class="trash icon"></i></a>
+            </div>
+        {% endif %}
+        <img class="ui big image" src="{{ posts_in_category.image.url }}">
         <div class="ui segment">
+            <div class="column">
+                <img class="ui bottom aligned circular tiny image" src="{{ object.author.profile.image.url }}">
+                <span>{{ object.author.profile.user }}</span>
+            </div>
             <h4>Description: (Posted on {{ posts_in_category.pub_date }}) </h4>
             <div class="ui fitted divider"></div>
             <p>{{ posts_in_category.description }}</p>

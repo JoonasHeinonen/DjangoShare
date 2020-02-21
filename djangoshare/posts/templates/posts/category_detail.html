@@ -4,7 +4,7 @@
             {% for post in all_posts %}
                 <div class="ui raised very padded text container segment">
                     <h2>{{ post.title }}</h2>
-                    <img src="{{ post.image.url }}"/><br />
+                    <img class="ui big image" src="{{ post.image.url }}"/><br />
                     <a  href="{% url 'post-detail' post.id%}" style="float: right;">Click here to see post >></a>
                 </div>
             {% endfor %}

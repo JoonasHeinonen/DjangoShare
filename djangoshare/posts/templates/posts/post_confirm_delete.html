@@ -1,0 +1,13 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+    <div class="ui raised very padded text container segment">
+        <form method="POST" class="ui form" enctype="multipart/form-data">
+            <h2>Delete Post</h2>
+            <h4>Are you sure that you want to delete the post "{{ object.title }}"</h4>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="ui red button" type="submit">Delete</button>
+            <a class="ui button" href="{% url 'post-detail' object.id %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
