@@ -18,6 +18,5 @@ urlpatterns = [
     path('new/', login_required(PostCreateView.as_view()), name='post-create'),
     path('category/post/<int:pk>/update/', login_required(PostUpdateView.as_view()), name='post-update'),
     path('category/post/<int:pk>/delete/', login_required(PostDeleteView.as_view()), name='post-delete'),
-    
     path('search/', Search.as_view(), name='search'),
 ]

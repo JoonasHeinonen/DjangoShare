@@ -41,3 +41,6 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+def reset(request):
+    return render(request, 'users/password_reset.html')
