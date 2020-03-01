@@ -358,3 +358,5 @@ vscode/
 
 # Ignore admin login credentials
 admin_login_credentials
+
+.env.local
